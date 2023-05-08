@@ -1,0 +1,22 @@
+PODS:
+  - MeterGauge (0.1.4)
+
+DEPENDENCIES:
+  - "MeterGauge (from `git@github.com:boof-tech/MeterGauge.git`, tag `0.1.4`)"
+
+EXTERNAL SOURCES:
+  MeterGauge:
+    :git: "git@github.com:boof-tech/MeterGauge.git"
+    :tag: 0.1.4
+
+CHECKOUT OPTIONS:
+  MeterGauge:
+    :git: "git@github.com:boof-tech/MeterGauge.git"
+    :tag: 0.1.4
+
+SPEC CHECKSUMS:
+  MeterGauge: 00eb8445970a6b15faaca8031de840f444dda1f2
+
+PODFILE CHECKSUM: a3e3a4b580193070145592ffd237ae81727edf19
+
+COCOAPODS: 1.12.1

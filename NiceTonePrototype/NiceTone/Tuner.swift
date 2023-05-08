@@ -4,6 +4,7 @@ import AudioKitUI
 import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
+import MeterGauge
 
 struct TunerData {
     var pitch: Float = 0.0
