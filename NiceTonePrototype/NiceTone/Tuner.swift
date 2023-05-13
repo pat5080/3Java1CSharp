@@ -11,6 +11,38 @@ struct TunerData {
     var amplitude: Float = 0.0
     var noteNameWithSharps = "-"
     var noteNameWithFlats = "-"
+    var noteFrequency: Double = 0.0
+    var minValue: Double = 0.0
+    var maxValue: Double = 0.0
+}
+
+struct MeterGaugeStyle: GaugeStyle {
+    private var gradient = AngularGradient(gradient: Gradient(colors: [.red, .green, .red]), center: .center, startAngle: .degrees(30), endAngle: .degrees(240))
+ 
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+ 
+            Circle()
+                .foregroundColor(Color(.systemGray6))
+            Circle()
+                .trim(from: 0, to: 0.75 * configuration.value)
+                .stroke(gradient, lineWidth: 20)
+                .rotationEffect(.degrees(135))
+            Circle()
+                .trim(from: 0, to: 0.75)
+                .stroke(Color.black, style: StrokeStyle(lineWidth: 10, lineCap: .butt, lineJoin: .round, dash: [1, 34], dashPhase: 0.0))
+                .rotationEffect(.degrees(135))
+            VStack {
+                configuration.currentValueLabel
+                    .font(.system(size: 60, weight: .bold, design: .rounded))
+                    .foregroundColor(.gray)
+                Text("")
+                    .font(.system(.body, design: .rounded))
+                    .bold()
+                    .foregroundColor(.gray)
+            }
+        }.frame(width: 300, height: 300)
+    }
 }
 
 class TunerConductor: ObservableObject, HasAudioEngine {
@@ -26,7 +58,7 @@ class TunerConductor: ObservableObject, HasAudioEngine {
     let silence: Fader
 
     var tracker: PitchTap!
-
+    
     let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
     let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
     let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
@@ -68,6 +100,7 @@ class TunerConductor: ObservableObject, HasAudioEngine {
             frequency *= 2.0
         }
 
+        
         var minDistance: Float = 10000.0
         var index = 0
 
@@ -81,11 +114,24 @@ class TunerConductor: ObservableObject, HasAudioEngine {
         let octave = Int(log2f(pitch / frequency))
         data.noteNameWithSharps = "\(noteNamesWithSharps[index])\(octave)"
         data.noteNameWithFlats = "\(noteNamesWithFlats[index])\(octave)"
+        data.noteFrequency = Double(frequency)
+        if (index == 0){
+            data.minValue = 0
+            data.maxValue = noteFrequencies[index+1]
+        } else if (index == noteFrequencies.count - 1){
+            data.minValue = noteFrequencies[index-1]
+            data.maxValue = 32.7
+        } else {
+            data.minValue = noteFrequencies[index-1]
+            data.maxValue = noteFrequencies[index+1]
+        }
     }
 }
 
 struct TunerView: View {
     @StateObject var conductor = TunerConductor()
+    var gaugeView: MeterGauge = MeterGauge();
+
 
     var body: some View {
         VStack {
@@ -106,6 +152,14 @@ struct TunerView: View {
                 Spacer()
                 Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
             }.padding()
+            
+            HStack {
+                Gauge(value: conductor.data.noteFrequency, in: conductor.data.minValue...conductor.data.maxValue) {
+                } currentValueLabel: {
+                    Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
+                }
+            }.gaugeStyle(MeterGaugeStyle())
+             .padding()
 
             InputDevicePicker(device: conductor.initialDevice)
 
