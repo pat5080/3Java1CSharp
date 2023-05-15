@@ -10,6 +10,8 @@ struct TunerData {
     var amplitude: Float = 0.0
     var noteNameWithSharps = "-"
     var noteNameWithFlats = "-"
+    var musicNote = "..."
+    var baseNote = "..."
 }
 
 class TunerConductor: ObservableObject, HasAudioEngine {
