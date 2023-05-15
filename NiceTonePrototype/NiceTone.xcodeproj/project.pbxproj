@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C475CBA2A1274A5001317BC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C475CB92A1274A5001317BC /* MainView.swift */; };
 		841F527D2A05515000B821EB /* DunneAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 841F527C2A05515000B821EB /* DunneAudioKit */; };
 		841F52802A05516400B821EB /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = 841F527F2A05516400B821EB /* Tonic */; };
 		84A9F3ED2A0545B1001F4670 /* NiceToneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F3EC2A0545B1001F4670 /* NiceToneApp.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C475CB92A1274A5001317BC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		841F527A2A054F3E00B821EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84A9F3E92A0545B1001F4670 /* NiceTone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NiceTone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A9F3EC2A0545B1001F4670 /* NiceToneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceToneApp.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				84A9F4062A0547BC001F4670 /* Tuner.swift */,
 				84A9F3F02A0545B3001F4670 /* Assets.xcassets */,
 				84A9F3F22A0545B3001F4670 /* Preview Content */,
+				1C475CB92A1274A5001317BC /* MainView.swift */,
 			);
 			path = NiceTone;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A9F4072A0547BC001F4670 /* Tuner.swift in Sources */,
+				1C475CBA2A1274A5001317BC /* MainView.swift in Sources */,
 				84A9F3ED2A0545B1001F4670 /* NiceToneApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
