@@ -18,8 +18,7 @@
 		84A9F4022A0545F0001F4670 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 84A9F4012A0545F0001F4670 /* AudioKitUI */; };
 		84A9F4052A054623001F4670 /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84A9F4042A054623001F4670 /* SporthAudioKit */; };
 		84A9F4072A0547BC001F4670 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4062A0547BC001F4670 /* Tuner.swift */; };
-		8D6252E71C9520766DA34600 /* Pods_NiceTone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A55A1C92078634C21710B /* Pods_NiceTone.framework */; };
-		9C5AAAF32A127191000FBFAA /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AAAF22A127191000FBFAA /* GaugeView.swift */; };
+		9CB2D5F12A128C4E006CCDB6 /* GaugeStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2D5F02A128C4E006CCDB6 /* GaugeStyleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +29,7 @@
 		84A9F3F02A0545B3001F4670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84A9F3F32A0545B3001F4670 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84A9F4062A0547BC001F4670 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
-		9C5AAAF22A127191000FBFAA /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
-		BF2257F50A8CC7DD884A990F /* Pods-NiceTone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceTone.release.xcconfig"; path = "Target Support Files/Pods-NiceTone/Pods-NiceTone.release.xcconfig"; sourceTree = "<group>"; };
+		9CB2D5F02A128C4E006CCDB6 /* GaugeStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeStyleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +71,10 @@
 				841F527A2A054F3E00B821EB /* Info.plist */,
 				84A9F3EC2A0545B1001F4670 /* NiceToneApp.swift */,
 				84A9F4062A0547BC001F4670 /* Tuner.swift */,
-				9C5AAAF22A127191000FBFAA /* GaugeView.swift */,
 				84A9F3F02A0545B3001F4670 /* Assets.xcassets */,
 				84A9F3F22A0545B3001F4670 /* Preview Content */,
 				1C475CB92A1274A5001317BC /* MainView.swift */,
+				9CB2D5F02A128C4E006CCDB6 /* GaugeStyleView.swift */,
 			);
 			path = NiceTone;
 			sourceTree = "<group>";
@@ -87,23 +85,6 @@
 				84A9F3F32A0545B3001F4670 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		9E1765A47E1A610547A4360F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				41F4D95916DD66EB4DE20E9F /* Pods-NiceTone.debug.xcconfig */,
-				BF2257F50A8CC7DD884A990F /* Pods-NiceTone.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		A97E7C9F0A3CFBAA04752E3D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				724A55A1C92078634C21710B /* Pods_NiceTone.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CB2D5F12A128C4E006CCDB6 /* GaugeStyleView.swift in Sources */,
 				84A9F4072A0547BC001F4670 /* Tuner.swift in Sources */,
 				1C475CBA2A1274A5001317BC /* MainView.swift in Sources */,
 				84A9F3ED2A0545B1001F4670 /* NiceToneApp.swift in Sources */,

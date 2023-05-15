@@ -137,13 +137,13 @@ struct TunerView: View {
                 Spacer()
                 Text("\(conductor.data.pitch, specifier: "%0.1f")")
             }.padding()
-
+            
             HStack {
                 Text("Amplitude")
                 Spacer()
                 Text("\(conductor.data.amplitude, specifier: "%0.1f")")
             }.padding()
-
+            
             HStack {
                 Text("Note Name")
                 Spacer()
@@ -161,7 +161,22 @@ struct TunerView: View {
                 Spacer()
                 Text("\(conductor.data.baseNote) > \(frequency, specifier: "%0.1f") ")
             }.padding()
-
+            
+            //value = current notefrequency, in: lower note frequency ... higher note frequency
+            Gauge(value: 0, in: 0...100) {
+            } currentValueLabel: {
+                //display current note here
+                Text("Current note")
+            }  minimumValueLabel: {
+                //insert note in lower boundary
+                Text("")
+                    .foregroundColor(.black)
+            } maximumValueLabel: {
+                //insert note in higher boundary
+                Text("")
+                    .foregroundColor(.black)
+            }.gaugeStyle(GaugeStyleView())
+            .padding()
 
             InputDevicePicker(device: conductor.initialDevice)
 
