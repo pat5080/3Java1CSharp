@@ -193,7 +193,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A9F4072A0547BC001F4670 /* Tuner.swift in Sources */,
+<<<<<<< HEAD
+				9C5AAAF32A127191000FBFAA /* GaugeView.swift in Sources */,
+=======
 				1C475CBA2A1274A5001317BC /* MainView.swift in Sources */,
+>>>>>>> 95dd20f2fb7be8916daf7f1550f9ecdffbd4920b
 				84A9F3ED2A0545B1001F4670 /* NiceToneApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
