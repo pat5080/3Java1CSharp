@@ -10,13 +10,13 @@ struct TunerData {
     var amplitude: Float = 0.0
     var noteNameWithSharps = "-"
     var noteNameWithFlats = "-"
-    var noteFrequency: Double = 0.0
-    var minValue: Double = 0.0
-    var maxValue: Double = 0.0
+    var musicNote = "..."
+    var baseNote = "..."
 }
 
 class TunerConductor: ObservableObject, HasAudioEngine {
     @Published var data = TunerData()
+    @Published var base = FrequencyView()
 
     let engine = AudioEngine()
     let initialDevice: Device
@@ -54,6 +54,8 @@ class TunerConductor: ObservableObject, HasAudioEngine {
         }
         tracker.start()
     }
+    
+    
 
     func update(_ pitch: AUValue, _ amp: AUValue) {
         // Reduces sensitivity to background noise to prevent random / fluctuating data.
@@ -84,22 +86,49 @@ class TunerConductor: ObservableObject, HasAudioEngine {
         let octave = Int(log2f(pitch / frequency))
         data.noteNameWithSharps = "\(noteNamesWithSharps[index])\(octave)"
         data.noteNameWithFlats = "\(noteNamesWithFlats[index])\(octave)"
-        data.noteFrequency = Double(frequency)
-        if (index == 0){
-            data.minValue = 0
-            data.maxValue = noteFrequencies[index+1]
-        } else if (index == noteFrequencies.count - 1){
-            data.minValue = noteFrequencies[index-1]
-            data.maxValue = 32.7
-        } else {
-            data.minValue = noteFrequencies[index-1]
-            data.maxValue = noteFrequencies[index+1]
+        data.baseNote = getBaseNoteName(Double(pitch))
+        let musicNote = frequencyToNote(Double(pitch), base.frequency )
+        if (data.musicNote != ".") {
+            if (!musicNote.elementsEqual(".")) {
+                data.musicNote = musicNote
+            }
         }
+        
+    }
+    
+    // function to convert the frequency to music node in concert pitch
+    func frequencyToNote(_ frequency: Double, _ baseFrequency: Double) -> String {
+//        let a = 440.0 // frequency of A4 note in Hz
+        let twelfthRootOfTwo = pow(2.0, 1.0/12.0)
+        let halfStepsFromA4 = log(frequency/baseFrequency) / log(twelfthRootOfTwo)
+        let noteNames = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
+        let noteIndex = Int(round(halfStepsFromA4)) % 12
+        let octave = Int(floor((halfStepsFromA4 + 9.0) / 12.0))
+        print("Frequency \(frequency) > ")
+        print("twelfthRootOfTwo \(twelfthRootOfTwo) ")
+        print("halfStepsFromA4 \(halfStepsFromA4) ")
+        print("noteIndex \(noteIndex) ")
+        print("octave \(octave) \n")
+        
+        if(noteIndex >= 0) {
+            return "\(noteNames[noteIndex])\(octave)"
+        } else {
+            return "."
+        }
+    }
+    
+    // function to get base note name based on frequency selection
+    func getBaseNoteName(_ frequency: Double) -> String {
+        let notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+        let noteNumber = 12 * log2(frequency / 440.0) + 69
+        let index = Int(noteNumber.rounded()) % notes.count
+        return notes[index]
     }
 }
 
 struct TunerView: View {
     @StateObject var conductor = TunerConductor()
+    @Binding var frequency: Double
 
     var body: some View {
         VStack {
@@ -122,22 +151,17 @@ struct TunerView: View {
             }.padding()
             
             HStack {
-                //value = current notefrequency, in: lower note frequency ... higher note frequency
-                Gauge(value: conductor.data.noteFrequency, in: conductor.data.minValue...conductor.data.maxValue) {
-                } currentValueLabel: {
-                    //display current note here
-                    Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
-                }  minimumValueLabel: {
-                    //insert note in lower boundary
-                    Text("")
-                      .foregroundColor(.black)
-                  } maximumValueLabel: {
-                      //insert note in higher boundary
-                    Text("")
-                          .foregroundColor(.black)
-                  }
-            }.gaugeStyle(GaugeView())
-             .padding()
+                Text("Music Note")
+                Spacer()
+                Text("\(conductor.data.musicNote) > \(frequency, specifier: "%0.1f") ")
+            }.padding()
+            
+            HStack {
+                Text("Base Music Note")
+                Spacer()
+                Text("\(conductor.data.baseNote) > \(frequency, specifier: "%0.1f") ")
+            }.padding()
+
 
             InputDevicePicker(device: conductor.initialDevice)
 

@@ -28,7 +28,7 @@ struct NiceToneApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TunerView()
+            MainView()
         }
     }
 }
