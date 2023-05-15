@@ -4,7 +4,6 @@ import AudioKitUI
 import AudioToolbox
 import SoundpipeAudioKit
 import SwiftUI
-import MeterGauge
 
 struct TunerData {
     var pitch: Float = 0.0
@@ -14,35 +13,6 @@ struct TunerData {
     var noteFrequency: Double = 0.0
     var minValue: Double = 0.0
     var maxValue: Double = 0.0
-}
-
-struct MeterGaugeStyle: GaugeStyle {
-    private var gradient = AngularGradient(gradient: Gradient(colors: [.red, .green, .red]), center: .center, startAngle: .degrees(30), endAngle: .degrees(240))
- 
-    func makeBody(configuration: Configuration) -> some View {
-        ZStack {
- 
-            Circle()
-                .foregroundColor(Color(.systemGray6))
-            Circle()
-                .trim(from: 0, to: 0.75 * configuration.value)
-                .stroke(gradient, lineWidth: 20)
-                .rotationEffect(.degrees(135))
-            Circle()
-                .trim(from: 0, to: 0.75)
-                .stroke(Color.black, style: StrokeStyle(lineWidth: 10, lineCap: .butt, lineJoin: .round, dash: [1, 34], dashPhase: 0.0))
-                .rotationEffect(.degrees(135))
-            VStack {
-                configuration.currentValueLabel
-                    .font(.system(size: 60, weight: .bold, design: .rounded))
-                    .foregroundColor(.gray)
-                Text("")
-                    .font(.system(.body, design: .rounded))
-                    .bold()
-                    .foregroundColor(.gray)
-            }
-        }.frame(width: 300, height: 300)
-    }
 }
 
 class TunerConductor: ObservableObject, HasAudioEngine {
@@ -130,8 +100,6 @@ class TunerConductor: ObservableObject, HasAudioEngine {
 
 struct TunerView: View {
     @StateObject var conductor = TunerConductor()
-    var gaugeView: MeterGauge = MeterGauge();
-
 
     var body: some View {
         VStack {
@@ -154,11 +122,21 @@ struct TunerView: View {
             }.padding()
             
             HStack {
+                //value = current notefrequency, in: lower note frequency ... higher note frequency
                 Gauge(value: conductor.data.noteFrequency, in: conductor.data.minValue...conductor.data.maxValue) {
                 } currentValueLabel: {
+                    //display current note here
                     Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
-                }
-            }.gaugeStyle(MeterGaugeStyle())
+                }  minimumValueLabel: {
+                    //insert note in lower boundary
+                    Text("")
+                      .foregroundColor(.black)
+                  } maximumValueLabel: {
+                      //insert note in higher boundary
+                    Text("")
+                          .foregroundColor(.black)
+                  }
+            }.gaugeStyle(GaugeView())
              .padding()
 
             InputDevicePicker(device: conductor.initialDevice)

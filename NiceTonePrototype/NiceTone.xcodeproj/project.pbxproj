@@ -19,6 +19,7 @@
 		84A9F4052A054623001F4670 /* SporthAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84A9F4042A054623001F4670 /* SporthAudioKit */; };
 		84A9F4072A0547BC001F4670 /* Tuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9F4062A0547BC001F4670 /* Tuner.swift */; };
 		8D6252E71C9520766DA34600 /* Pods_NiceTone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724A55A1C92078634C21710B /* Pods_NiceTone.framework */; };
+		9C5AAAF32A127191000FBFAA /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5AAAF22A127191000FBFAA /* GaugeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		84A9F3F02A0545B3001F4670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84A9F3F32A0545B3001F4670 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84A9F4062A0547BC001F4670 /* Tuner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuner.swift; sourceTree = "<group>"; };
+		9C5AAAF22A127191000FBFAA /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
 		BF2257F50A8CC7DD884A990F /* Pods-NiceTone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NiceTone.release.xcconfig"; path = "Target Support Files/Pods-NiceTone/Pods-NiceTone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				84A9F3EC2A0545B1001F4670 /* NiceToneApp.swift */,
 				84A9F3EE2A0545B1001F4670 /* ContentView.swift */,
 				84A9F4062A0547BC001F4670 /* Tuner.swift */,
+				9C5AAAF22A127191000FBFAA /* GaugeView.swift */,
 				84A9F3F02A0545B3001F4670 /* Assets.xcassets */,
 				84A9F3F22A0545B3001F4670 /* Preview Content */,
 			);
@@ -97,7 +100,6 @@
 				41F4D95916DD66EB4DE20E9F /* Pods-NiceTone.debug.xcconfig */,
 				BF2257F50A8CC7DD884A990F /* Pods-NiceTone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -164,12 +166,12 @@
 			);
 			mainGroup = 84A9F3E02A0545B1001F4670;
 			packageReferences = (
-				84A9F3FA2A0545C7001F4670 /* XCRemoteSwiftPackageReference "AudioKit.git" */,
-				84A9F3FD2A0545DD001F4670 /* XCRemoteSwiftPackageReference "AudioKitEX.git" */,
-				84A9F4002A0545F0001F4670 /* XCRemoteSwiftPackageReference "AudioKitUI.git" */,
-				84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit.git" */,
-				841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit.git" */,
-				841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic.git" */,
+				84A9F3FA2A0545C7001F4670 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				84A9F3FD2A0545DD001F4670 /* XCRemoteSwiftPackageReference "AudioKitEX" */,
+				84A9F4002A0545F0001F4670 /* XCRemoteSwiftPackageReference "AudioKitUI" */,
+				84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit" */,
+				841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit" */,
+				841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic" */,
 			);
 			productRefGroup = 84A9F3EA2A0545B1001F4670 /* Products */;
 			projectDirPath = "";
@@ -241,6 +243,7 @@
 			files = (
 				84A9F3EF2A0545B1001F4670 /* ContentView.swift in Sources */,
 				84A9F4072A0547BC001F4670 /* Tuner.swift in Sources */,
+				9C5AAAF32A127191000FBFAA /* GaugeView.swift in Sources */,
 				84A9F3ED2A0545B1001F4670 /* NiceToneApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +459,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit.git" */ = {
+		841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/DunneAudioKit.git";
 			requirement = {
@@ -464,7 +467,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic.git" */ = {
+		841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/Tonic.git";
 			requirement = {
@@ -472,7 +475,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		84A9F3FA2A0545C7001F4670 /* XCRemoteSwiftPackageReference "AudioKit.git" */ = {
+		84A9F3FA2A0545C7001F4670 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
 			requirement = {
@@ -480,7 +483,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		84A9F3FD2A0545DD001F4670 /* XCRemoteSwiftPackageReference "AudioKitEX.git" */ = {
+		84A9F3FD2A0545DD001F4670 /* XCRemoteSwiftPackageReference "AudioKitEX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/AudioKitEX.git";
 			requirement = {
@@ -488,7 +491,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		84A9F4002A0545F0001F4670 /* XCRemoteSwiftPackageReference "AudioKitUI.git" */ = {
+		84A9F4002A0545F0001F4670 /* XCRemoteSwiftPackageReference "AudioKitUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/AudioKitUI.git";
 			requirement = {
@@ -496,7 +499,7 @@
 				minimumVersion = 0.3.5;
 			};
 		};
-		84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit.git" */ = {
+		84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/SporthAudioKit.git";
 			requirement = {
@@ -509,32 +512,32 @@
 /* Begin XCSwiftPackageProductDependency section */
 		841F527C2A05515000B821EB /* DunneAudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit.git" */;
+			package = 841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit" */;
 			productName = DunneAudioKit;
 		};
 		841F527F2A05516400B821EB /* Tonic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic.git" */;
+			package = 841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic" */;
 			productName = Tonic;
 		};
 		84A9F3FB2A0545C7001F4670 /* AudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84A9F3FA2A0545C7001F4670 /* XCRemoteSwiftPackageReference "AudioKit.git" */;
+			package = 84A9F3FA2A0545C7001F4670 /* XCRemoteSwiftPackageReference "AudioKit" */;
 			productName = AudioKit;
 		};
 		84A9F3FE2A0545DD001F4670 /* AudioKitEX */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84A9F3FD2A0545DD001F4670 /* XCRemoteSwiftPackageReference "AudioKitEX.git" */;
+			package = 84A9F3FD2A0545DD001F4670 /* XCRemoteSwiftPackageReference "AudioKitEX" */;
 			productName = AudioKitEX;
 		};
 		84A9F4012A0545F0001F4670 /* AudioKitUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84A9F4002A0545F0001F4670 /* XCRemoteSwiftPackageReference "AudioKitUI.git" */;
+			package = 84A9F4002A0545F0001F4670 /* XCRemoteSwiftPackageReference "AudioKitUI" */;
 			productName = AudioKitUI;
 		};
 		84A9F4042A054623001F4670 /* SporthAudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit.git" */;
+			package = 84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit" */;
 			productName = SporthAudioKit;
 		};
 /* End XCSwiftPackageProductDependency section */
