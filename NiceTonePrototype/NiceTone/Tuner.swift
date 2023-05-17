@@ -163,17 +163,17 @@ struct TunerView: View {
             }.padding()
             
             //value = current notefrequency, in: lower note frequency ... higher note frequency
-            Gauge(value: 0, in: 0...100) {
+            Gauge(value: conductor.data.pitch, in: Float(Int(frequency/2))...Float(Int(frequency))*2) {
             } currentValueLabel: {
                 //display current note here
                 Text("Current note")
             }  minimumValueLabel: {
                 //insert note in lower boundary
-                Text("")
+                Text("\(Float(Int(frequency/2)), specifier: "%0.1f")")
                     .foregroundColor(.black)
             } maximumValueLabel: {
                 //insert note in higher boundary
-                Text("")
+                Text("\(Float(Int(frequency)*2), specifier: "%0.1f")")
                     .foregroundColor(.black)
             }.gaugeStyle(GaugeStyleView())
             .padding()
