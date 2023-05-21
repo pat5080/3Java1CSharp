@@ -146,6 +146,7 @@
 				84A9F4032A054623001F4670 /* XCRemoteSwiftPackageReference "SporthAudioKit" */,
 				841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit" */,
 				841F527E2A05516400B821EB /* XCRemoteSwiftPackageReference "Tonic" */,
+				43646BD72A19E14000D34E24 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 84A9F3EA2A0545B1001F4670 /* Products */;
 			projectDirPath = "";
@@ -389,6 +390,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		43646BD72A19E14000D34E24 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		841F527B2A05515000B821EB /* XCRemoteSwiftPackageReference "DunneAudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/DunneAudioKit.git";
