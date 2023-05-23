@@ -1,7 +1,7 @@
 # 3Java1CSharp
 UTS 41889 Assignment 3 project
 
-# background
+# Background
 The "Nice Tone" is designed to offer a comprehensive tuning solution for musicians of all levels. From budding artists seeking their first tune to professionals fine-tuning their concert performance, our application aims to cater to everyone's needs with unmatched precision and user-friendliness.
 
 Harnessing the power of advanced audio processing and machine learning algorithms, the "Nice Tone" is capable of capturing the sound from your musical instrument and determining its note with remarkable accuracy. Whether you're tuning a guitar, a violin, or even an exotic sitar, our application adjusts seamlessly to the unique characteristics of your instrument.
@@ -12,7 +12,7 @@ Moreover, our application is built with a focus on ease-of-use and adaptability.
 
 The "Music Tuner App" is more than just a tuner; it is a companion for your musical journey, designed to enhance your musical experience and help you attain the perfection you aspire to in your music. As we continually strive for innovation, we welcome you to join us on this melodic voyage, creating symphonies of the future.
 
-# setup
+# Setup
 Add the audiokit packages to the project
 https://github.com/AudioKit/AudioKit
 
