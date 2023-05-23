@@ -14,6 +14,16 @@ struct TunerData {
     var baseNote = "..."
 }
 
+struct CustomCenter: AlignmentID {
+  static func defaultValue(in context: ViewDimensions) -> CGFloat {
+    context[HorizontalAlignment.center]
+  }
+}
+
+extension HorizontalAlignment {
+  static let customCenter: HorizontalAlignment = .init(CustomCenter.self)
+}
+
 class TunerConductor: ObservableObject, HasAudioEngine {
     @Published var data = TunerData()
     @Published var base = FrequencyView()
@@ -126,41 +136,94 @@ class TunerConductor: ObservableObject, HasAudioEngine {
     }
 }
 
+let notes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"]
+let freq = [261.0, 277.0, 293.0, 311.0, 329.0, 349.0, 370.0, 392.0, 415.0, 440.0, 466.0, 493.0]
+
+func setCurrentFrequency(note: String) -> Double {
+    
+    var frequency: Double
+    
+    switch note {
+    case notes[0]:
+        frequency = freq[0]
+    case notes[1]:
+        frequency = freq[1]
+    case notes[2]:
+        frequency = freq[2]
+    case notes[3]:
+        frequency = freq[3]
+    case notes[4]:
+        frequency = freq[4]
+    case notes[5]:
+        frequency = freq[5]
+    case notes[6]:
+        frequency = freq[6]
+    case notes[7]:
+        frequency = freq[7]
+    case notes[8]:
+        frequency = freq[8]
+    case notes[9]:
+        frequency = freq[9]
+    case notes[10]:
+        frequency = freq[10]
+    case notes[11]:
+        frequency = freq[11]
+    default:
+        frequency = freq[9]
+    }
+    
+    return frequency
+}
+
 struct TunerView: View {
     @StateObject var conductor = TunerConductor()
     @Binding var frequency: Double
+    @State private var selection = "A"
 
     var body: some View {
-        VStack {
+        VStack(alignment: .customCenter) {
             HStack {
-                Text("Frequency")
-                Spacer()
-                Text("\(conductor.data.pitch, specifier: "%0.1f")")
-            }.padding()
-            
+                VStack {
+                    Text("Amplitude")
+                    Spacer()
+                    Text("\(conductor.data.amplitude, specifier: "%0.1f")")
+                }.padding()
+                
+                VStack {
+                    Text("Note Name")
+                    Spacer()
+                    Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
+                }.padding()
+            }
             HStack {
-                Text("Amplitude")
-                Spacer()
-                Text("\(conductor.data.amplitude, specifier: "%0.1f")")
-            }.padding()
-            
+                VStack {
+                    Text("Music Note")
+                    Spacer()
+                    Text("\(conductor.data.musicNote) > \(frequency, specifier: "%0.1f") ")
+                }.padding()
+                
+                VStack {
+                    Text("Base Music Note")
+                    Spacer()
+                    Text("\(conductor.data.baseNote) > \(frequency, specifier: "%0.1f") ")
+                }.padding()
+            }
             HStack {
-                Text("Note Name")
-                Spacer()
-                Text("\(conductor.data.noteNameWithSharps) / \(conductor.data.noteNameWithFlats)")
-            }.padding()
-            
-            HStack {
-                Text("Music Note")
-                Spacer()
-                Text("\(conductor.data.musicNote) > \(frequency, specifier: "%0.1f") ")
-            }.padding()
-            
-            HStack {
-                Text("Base Music Note")
-                Spacer()
-                Text("\(conductor.data.baseNote) > \(frequency, specifier: "%0.1f") ")
-            }.padding()
+                VStack {
+                    Text("Target Note")
+                    Spacer()
+                    Picker("Select Note", selection: $selection) {
+                        ForEach(notes, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .padding()
+                    .onChange(of: selection) { newValue in
+                        frequency = setCurrentFrequency(note: newValue)
+                    }
+                }
+            }
             
             //value = current notefrequency, in: lower note frequency ... higher note frequency
             Gauge(value: conductor.data.pitch, in: Float(Int(frequency/2))...Float(Int(frequency))*2) {
@@ -175,12 +238,22 @@ struct TunerView: View {
                 //insert note in higher boundary
                 Text("\(Float(Int(frequency)*2), specifier: "%0.1f")")
                     .foregroundColor(.black)
-            }.gaugeStyle(GaugeStyleView())
-            .padding()
+            }.gaugeStyle(GaugeStyleView(targetFrequency: $frequency, targetNote: $selection))
+            
+            HStack
+            {
+                Text("\(conductor.data.pitch, specifier: "%0.1f")")
+                    .font(.system(size: 30))
+                    .alignmentGuide(.customCenter) {
+                        $0[HorizontalAlignment.center]
+                    }
+                Text("Hz")
+                    .font(.title3)
+            }
 
-            InputDevicePicker(device: conductor.initialDevice)
+            //InputDevicePicker(device: conductor.initialDevice)
 
-            NodeRollingView(conductor.tappableNodeA).clipped()
+            //NodeRollingView(conductor.tappableNodeA).clipped()
 
             NodeOutputView(conductor.tappableNodeB).clipped()
 
